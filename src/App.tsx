@@ -9,10 +9,11 @@ import Data from "./text.js";
 import "./App.scss";
 import TypedText from "./components/TypedText";
 import InputArea from "./components/InputArea";
+import "./fonts/retganon.ttf";
 
 function App() {
   const [inputText, setInputText] = React.useState("");
-  const [page, setPage] = React.useState("home");
+  const [page, setPage] = React.useState("loading");
 
   const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -38,6 +39,7 @@ function App() {
 
     input = input.toLocaleLowerCase();
     if (input in Data) {
+      setInputText("");
       setPage(input);
     }
   };
@@ -60,7 +62,11 @@ function App() {
             <div className="overlay"></div>
             <div id="container">
               <div className="column left">
-                <TypedText textArray={Data[page as keyof typeof Data]} />
+                <TypedText
+                  page={page}
+                  setPage={setPage}
+                  textArray={Data[page as keyof typeof Data]}
+                />
                 <InputArea
                   inputRef={inputRef}
                   inputText={inputText}
@@ -70,11 +76,13 @@ function App() {
               </div>
 
               <div className="column right">
-                Bohdan Kovalevskyi
-                <br />
-                Someone’s Knocking at My Door
-                <br />
-                01.12.13
+                {/* <img src="/sprite-long.png" /> */}
+                <div className="animated-img-wrap">
+                  {/* <div className="animated-img animated-img-stack"></div> */}
+                  <div className="animated-img animated-img-home"></div>
+                  <div className="animated-img animated-img-face"></div>
+                </div>
+                <div className=""></div>
               </div>
             </div>
           </div>

@@ -1,9 +1,22 @@
 @import "https://fonts.googleapis.com/css2?family=VT323&display=swap";
 $primary: #adff7e;
+
+// @font-face {
+//   font-family: "Retganon";
+//   src: local("Retganon"), url("../public/retganon.ttf") format("truetype");
+// }
+
+@font-face {
+  font-family: "Retganon";
+  src: local("Retganon"), url("./fonts/retganon.ttf") format("truetype");
+}
+
 body {
-  font-family: "VT323", Helvetica, sans-serif;
+  font-family: "Retganon";
+
+  // font-family: "Retganon", Helvetica, sans-serif;
   color: $primary;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   line-height: 1.5em;
   width: 100vw;
   height: 100vh;
@@ -42,17 +55,16 @@ body {
   overflow: hidden;
   position: fixed;
   bottom: 0;
-  width: 967px;
-  height: 850px;
-  padding: 132px 110px 120px;
-  background-image: url(https://dodo.dev/img/pc-pixel.1884972d.png);
+  width: 970px;
+  height: 855px;
+  padding: 70px 90px 170px;
+  background-image: url("../public/monitor.png");
   background-size: cover;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
 }
-
 .monitor__terminal {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -152,16 +164,16 @@ body {
 .column {
   &.left {
     padding: 35px 35px 0 35px;
-    width: 55%;
-    flex: 0 0 55%;
+    width: 60%;
+    flex: 0 0 60%;
   }
   &.right {
-    position: fixed;
-    text-align: center;
-    align-self: center;
-    right: 50px;
-    padding-right: 16px;
-    width: 45%;
+    // position: fixed;
+    // text-align: center;
+    // align-self: center;
+    // right: 50px;
+    // padding-right: 16px;
+    width: 40%;
   }
 }
 
@@ -257,5 +269,129 @@ body {
         }
       }
     }
+  }
+}
+
+@media (max-width: 599px) {
+  .app-wrap {
+    font-size: 14px;
+    text-shadow: none;
+  }
+  .monitor {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scale(1) !important;
+    transform: scale(1) !important;
+  }
+
+  .monitor__terminal {
+    border-radius: 0;
+    border: none;
+  }
+
+  #container {
+    display: inline-block;
+
+    .column.left {
+      padding: 20px 25px 0 20px;
+      width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .column.right {
+      position: static;
+      width: 100%;
+      right: auto;
+    }
+  }
+}
+
+.animated-img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  will-change: background-image;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  animation-duration: 1.5s;
+  animation-timing-function: steps(1);
+  animation-iteration-count: infinite;
+}
+
+.animated-img-stack {
+  animation-name: stack;
+  animation-duration: 18s;
+}
+
+.animated-img-home {
+  filter: invert(15%) sepia(27%) saturate(900%) hue-rotate(50deg)
+    brightness(500%) contrast(50%) drop-shadow(0 0 40px #adff7e);
+  position: absolute;
+  right: 0;
+  top: 70px;
+  animation-name: home;
+  animation-duration: 4s;
+}
+
+.animated-img-face {
+  filter: invert(15%) sepia(27%) saturate(1000%) hue-rotate(45deg)
+    brightness(90%) contrast(50%) drop-shadow(0 0 40px #adff7e);
+  position: absolute;
+  right: -73px;
+  bottom: -30px;
+  animation-name: face;
+  animation-duration: 4s;
+}
+
+@keyframes stack {
+  0% {
+    background-image: url("../public/stack/1.png");
+  }
+  20% {
+    background-image: url("../public/stack/1.png");
+  }
+  40% {
+    background-image: url("../public/stack/2.png");
+  }
+  60% {
+    background-image: url("../public/stack/2.png");
+  }
+  80% {
+    background-image: url("../public/stack/1.png");
+  }
+  to {
+    background-image: url("../public/stack/1.png");
+  }
+}
+@keyframes face {
+  0% {
+    background-image: url("../public/face/1.png");
+  }
+  50% {
+    background-image: url("../public/face/2.png");
+  }
+  to {
+    background-image: url("../public/face/2.png");
+  }
+}
+@keyframes home {
+  0% {
+    background-image: none;
+  }
+  50% {
+    background-image: url("../public/home/1.png");
+  }
+  to {
+    background-image: none;
   }
 }

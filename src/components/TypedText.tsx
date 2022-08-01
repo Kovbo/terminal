@@ -1,7 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
-function TypedText({ textArray }: { textArray: any }) {
+function TypedText({
+  textArray,
+  page,
+  setPage,
+}: {
+  textArray: any;
+  page: string;
+  setPage: any;
+}) {
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -54,12 +62,13 @@ function TypedText({ textArray }: { textArray: any }) {
       let char = document.querySelector(".typed-char");
 
       if (!char) {
+        if (page === "loading") setPage("home");
         // no hidden paragraphs left
         return clearInterval(intervalId); // stop running interval and exit
       }
 
       char.className = "typed-char-show";
-    }, 10);
+    }, 20);
   }, [text]);
 
   return (
