@@ -3,18 +3,20 @@ import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 function TypedText({
   textArray,
+  commandsArray,
   page,
   setPage,
 }: {
-  textArray: any;
+  textArray: string[];
+  commandsArray: string[];
   page: string;
-  setPage: any;
+  setPage: (value: string) => void;
 }) {
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const text = useMemo(() => {
-    return textArray.map((el: any, key: number) => {
+    return [...textArray, ...commandsArray].map((el: any, key: number) => {
       return (
         <p key={key} className="typed-paragraph">
           {el.split(" ").map((word: string, key: number) => (

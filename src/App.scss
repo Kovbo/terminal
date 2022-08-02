@@ -1,5 +1,5 @@
 @import "https://fonts.googleapis.com/css2?family=VT323&display=swap";
-$primary: #adff7e;
+$primary: #9bef6b;
 
 // @font-face {
 //   font-family: "Retganon";
@@ -7,16 +7,16 @@ $primary: #adff7e;
 // }
 
 @font-face {
-  font-family: "Retganon";
-  src: local("Retganon"), url("./fonts/retganon.ttf") format("truetype");
+  font-family: "KarmaS";
+  src: local("KarmaS"), url("./fonts/karma_s.otf") format("opentype");
 }
 
 body {
-  font-family: "Retganon";
+  font-family: "KarmaS";
 
   // font-family: "Retganon", Helvetica, sans-serif;
   color: $primary;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.5em;
   width: 100vw;
   height: 100vh;
@@ -317,8 +317,10 @@ body {
 .animated-img {
   background-size: contain;
   background-repeat: no-repeat;
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  top: 25%;
+  width: 250px;
+  height: 250px;
   pointer-events: none;
   will-change: background-image;
   backface-visibility: hidden;
@@ -326,72 +328,75 @@ body {
   animation-duration: 1.5s;
   animation-timing-function: steps(1);
   animation-iteration-count: infinite;
-}
 
-.animated-img-stack {
-  animation-name: stack;
-  animation-duration: 18s;
-}
+  &.home {
+    filter: invert(15%) sepia(27%) saturate(1000%) hue-rotate(45deg)
+      brightness(90%) contrast(50%) drop-shadow(0 0 40px #adff7e);
+    right: 0;
+    top: 70px;
+    animation-name: home;
+    animation-duration: 4s;
+    width: 420px;
+    height: 555px;
+  }
+  @keyframes home {
+    0% {
+      background-image: url("../public/home/1.png");
+    }
+    50% {
+      background-image: url("../public/home/2.png");
+    }
+    to {
+      background-image: url("../public/home/1.png");
+    }
+  }
 
-.animated-img-home {
-  filter: invert(15%) sepia(27%) saturate(900%) hue-rotate(50deg)
-    brightness(500%) contrast(50%) drop-shadow(0 0 40px #adff7e);
-  position: absolute;
-  right: 0;
-  top: 70px;
-  animation-name: home;
-  animation-duration: 4s;
-}
+  &.stack {
+    filter: invert(75%) sepia(70%) saturate(477%) hue-rotate(50deg)
+      brightness(100%) contrast(60%) drop-shadow(0 0 25px #adff7e);
+    animation-name: stack;
+    animation-duration: 4s;
+    width: 300px;
+    height: 300px;
+    top: 35%;
+  }
 
-.animated-img-face {
-  filter: invert(15%) sepia(27%) saturate(1000%) hue-rotate(45deg)
-    brightness(90%) contrast(50%) drop-shadow(0 0 40px #adff7e);
-  position: absolute;
-  right: -73px;
-  bottom: -30px;
-  animation-name: face;
-  animation-duration: 4s;
-}
+  @keyframes stack {
+    0% {
+      background-image: url("../public/stack/0.png");
+    }
+    25% {
+      background-image: url("../public/stack/1.png");
+    }
+    50% {
+      background-image: url("../public/stack/2.png");
+    }
+    75% {
+      background-image: url("../public/stack/3.png");
+    }
+    to {
+      background-image: url("../public/stack/0.png");
+    }
+  }
 
-@keyframes stack {
-  0% {
-    background-image: url("../public/stack/1.png");
-  }
-  20% {
-    background-image: url("../public/stack/1.png");
-  }
-  40% {
-    background-image: url("../public/stack/2.png");
-  }
-  60% {
-    background-image: url("../public/stack/2.png");
-  }
-  80% {
-    background-image: url("../public/stack/1.png");
-  }
-  to {
-    background-image: url("../public/stack/1.png");
-  }
-}
-@keyframes face {
-  0% {
-    background-image: url("../public/face/1.png");
-  }
-  50% {
-    background-image: url("../public/face/2.png");
-  }
-  to {
-    background-image: url("../public/face/2.png");
-  }
-}
-@keyframes home {
-  0% {
-    background-image: none;
-  }
-  50% {
-    background-image: url("../public/home/1.png");
-  }
-  to {
-    background-image: none;
+  @keyframes projects {
+    0% {
+      background-image: url("../public/stack/1.png");
+    }
+    20% {
+      background-image: url("../public/stack/1.png");
+    }
+    40% {
+      background-image: url("../public/stack/2.png");
+    }
+    60% {
+      background-image: url("../public/stack/2.png");
+    }
+    80% {
+      background-image: url("../public/stack/1.png");
+    }
+    to {
+      background-image: url("../public/stack/1.png");
+    }
   }
 }

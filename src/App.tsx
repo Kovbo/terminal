@@ -66,6 +66,7 @@ function App() {
                   page={page}
                   setPage={setPage}
                   textArray={Data[page as keyof typeof Data]}
+                  commandsArray={Data["commands"]}
                 />
                 <InputArea
                   inputRef={inputRef}
@@ -76,11 +77,8 @@ function App() {
               </div>
 
               <div className="column right">
-                {/* <img src="/sprite-long.png" /> */}
                 <div className="animated-img-wrap">
-                  {/* <div className="animated-img animated-img-stack"></div> */}
-                  <div className="animated-img animated-img-home"></div>
-                  <div className="animated-img animated-img-face"></div>
+                  <div className={`animated-img ${page}`}></div>
                 </div>
                 <div className=""></div>
               </div>
