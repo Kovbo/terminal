@@ -65,7 +65,7 @@ export default {
     "",
     "JavaScript",
     "TypeScript",
-    "React (hooks)",
+    "React",
     "Vue.js",
     "PHP",
     "Laravel",

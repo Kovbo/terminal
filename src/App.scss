@@ -351,14 +351,35 @@ body {
     }
   }
 
+  &.jobs {
+    filter: invert(0%) sepia(70%) saturate(477%) hue-rotate(50deg)
+      brightness(100%) contrast(60%) drop-shadow(0 0 25px #adff7e);
+    animation-name: jobs;
+    animation-duration: 4s;
+    width: 300px;
+    height: 300px;
+  }
+
+  @keyframes jobs {
+    0% {
+      background-image: url("../public/jobs/1.png");
+    }
+    33% {
+      background-image: url("../public/jobs/2.png");
+    }
+    66% {
+      background-image: url("../public/jobs/3.png");
+    }
+    to {
+      background-image: url("../public/jobs/1.png");
+    }
+  }
+
   &.stack {
     filter: invert(75%) sepia(70%) saturate(477%) hue-rotate(50deg)
       brightness(100%) contrast(60%) drop-shadow(0 0 25px #adff7e);
     animation-name: stack;
     animation-duration: 4s;
-    width: 300px;
-    height: 300px;
-    top: 35%;
   }
 
   @keyframes stack {
