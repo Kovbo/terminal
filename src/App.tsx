@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Data from "./text.js";
+import Data from "./story.js";
 import "./App.scss";
 import TypedText from "./components/TypedText";
 import InputArea from "./components/InputArea";
@@ -65,8 +65,8 @@ function App() {
                 <TypedText
                   page={page}
                   setPage={setPage}
-                  textArray={Data[page as keyof typeof Data]}
-                  commandsArray={Data["commands"]}
+                  textArray={Data.find((textNode) => textNode.id === 1)}
+                  commandsArray={["1243", "4356"]}
                 />
                 <InputArea
                   inputRef={inputRef}

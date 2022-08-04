@@ -28,7 +28,7 @@ function InputArea({
   return (
     <div>
       <div className="cmd-input">
-        <span>Bohdan &gt; </span>
+        <span>A:/ &gt; </span>
         <div className="input-wrapper">
           <input
             onKeyDown={handleKeyDown}

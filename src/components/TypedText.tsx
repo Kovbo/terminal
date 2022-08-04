@@ -7,7 +7,7 @@ function TypedText({
   page,
   setPage,
 }: {
-  textArray: string[];
+  textArray: any;
   commandsArray: string[];
   page: string;
   setPage: (value: string) => void;
@@ -15,8 +15,18 @@ function TypedText({
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
+  const commands = useMemo(() => {
+    return textArray.commands.map((el: any, key: number) => {
+      return (
+        <p key={key} className="typed-paragraph">
+          &gt; {el.text}
+        </p>
+      );
+    });
+  }, [textArray]);
+
   const text = useMemo(() => {
-    return [...textArray, ...commandsArray].map((el: any, key: number) => {
+    return textArray.text.map((el: any, key: number) => {
       return (
         <p key={key} className="typed-paragraph">
           {el.split(" ").map((word: string, key: number) => (
@@ -76,6 +86,7 @@ function TypedText({
   return (
     <div>
       <div id="text-container">{text}</div>
+      <div id="text-container">{commands}</div>
     </div>
   );
 }
