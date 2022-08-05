@@ -9,6 +9,7 @@ const useResizeScreen = () => {
 
   const updateMonitorSize = () => {
     let bounding = document.body.getBoundingClientRect();
+    console.log(bounding);
     let monitorElement = document.getElementById("monitor");
     if (monitorElement) {
       let n = Math.min(

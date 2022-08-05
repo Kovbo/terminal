@@ -55,34 +55,32 @@ function App() {
   };
 
   return (
-    <div>
-      <div onClick={() => focus(inputRef)} className="app-wrap">
-        <div id="monitor" className="monitor">
-          <div className="monitor__terminal">
-            <div className="noise"></div>
-            <div className="overlay"></div>
-            <div id="container">
-              <div className="column left">
-                <TerminalTextArea
-                  page={page}
-                  setPage={setPage}
-                  textNode={textNode}
-                />
-                <InputArea
-                  inputRef={inputRef}
-                  inputText={inputText}
-                  setInputText={setInputText}
-                  handleEnter={handleEnterKeydown}
-                />
-              </div>
+    <div onClick={() => focus(inputRef)} className="app-wrap">
+      <div id="monitor" className="monitor">
+        <div className="monitor__terminal">
+          <div className="noise"></div>
+          <div className="overlay"></div>
+          <div id="container">
+            <div className="column left">
+              <TerminalTextArea
+                page={page}
+                setPage={setPage}
+                textNode={textNode}
+              />
+              <InputArea
+                inputRef={inputRef}
+                inputText={inputText}
+                setInputText={setInputText}
+                handleEnter={handleEnterKeydown}
+              />
+            </div>
 
-              <div className="column right">
-                {/* If you want to add an image for a scene */}
-                {/* <div className="animated-img-wrap"> */}
-                {/* <div className={`animated-img ${page}`}></div> */}
-                {/* </div> */}
-                <div className=""></div>
-              </div>
+            <div className="column right">
+              {/* If you want to add an image for a scene */}
+              {/* <div className="animated-img-wrap"> */}
+              {/* <div className={`animated-img ${page}`}></div> */}
+              {/* </div> */}
+              <div className=""></div>
             </div>
           </div>
         </div>
