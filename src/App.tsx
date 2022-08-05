@@ -7,66 +7,69 @@ import React, {
 } from "react";
 import Data from "./story.js";
 import "./App.scss";
-import TypedText from "./components/TypedText";
+import TerminalTextArea from "./components/TerminalTextArea";
 import InputArea from "./components/InputArea";
 import "./fonts/retganon.ttf";
+import focus from "./utils/focus";
+import useResizeScreen from "./hooks/useResizeScreen";
 
 function App() {
-  const [inputText, setInputText] = React.useState("");
-  const [page, setPage] = React.useState("loading");
+  const [inputText, setInputText] = React.useState<string>("");
+  const [page, setPage] = React.useState<number>(1);
+  const [textNode, setTextNode] = React.useState(
+    Data.find((textNode) => textNode.id === page)
+  );
 
   const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  useLayoutEffect(() => {
-    function updateMonitorSize() {
-      let bounding = document.body.getBoundingClientRect();
-      let monitorElement = document.getElementById("monitor");
-      if (monitorElement) {
-        let n = Math.min(
-          (bounding.height - 15) / monitorElement.clientHeight,
-          (bounding.width - 100) / monitorElement.clientWidth
-        );
-        monitorElement.style.transform = `matrix(${n},0,0,${n}, 1, 1)`;
-      }
-    }
-    window.addEventListener("resize", updateMonitorSize);
-    updateMonitorSize();
-    return () => window.removeEventListener("resize", updateMonitorSize);
-  }, []);
+  useResizeScreen();
 
+  useEffect(() => {
+    setTextNode(Data.find((textNode) => textNode.id === page));
+    focus(inputRef);
+  }, [page]);
+
+  //
   const handleEnterKeydown = (event: { key: string }, input: string) => {
     if (event.key !== "Enter") return;
 
-    input = input.toLocaleLowerCase();
-    if (input in Data) {
-      setInputText("");
-      setPage(input);
-    }
-  };
+    input = input.toLocaleLowerCase().trim();
 
-  // useEffect(() => {
-  //   // focusInput();
-  //   focusTop();
-  //   console.log("render");
-  // }, []);
-  const focusInput = () => {
-    inputRef.current.focus();
+    let nextText = 0;
+    textNode?.options?.forEach((el) => {
+      if (el.text.toLocaleLowerCase() === input) {
+        nextText = el.nextText;
+      }
+    });
+
+    setInputText("");
+
+    if (nextText === 0) {
+      console.log("Command does not exist");
+    }
+
+    if (nextText > 0) {
+      setPage(nextText);
+    }
+
+    if (nextText < 0) {
+      setPage(1);
+    }
   };
 
   return (
     <div>
-      <div onClick={() => focusInput()} className="app-wrap">
+      <div onClick={() => focus(inputRef)} className="app-wrap">
         <div id="monitor" className="monitor">
           <div className="monitor__terminal">
             <div className="noise"></div>
             <div className="overlay"></div>
             <div id="container">
               <div className="column left">
-                <TypedText
+                <TerminalTextArea
                   page={page}
                   setPage={setPage}
-                  textArray={Data.find((textNode) => textNode.id === 1)}
-                  commandsArray={["1243", "4356"]}
+                  textNode={textNode}
                 />
                 <InputArea
                   inputRef={inputRef}

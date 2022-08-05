@@ -177,31 +177,34 @@ body {
   }
 }
 
-.typed-paragraph {
-  padding-bottom: 5px;
-  display: none;
-}
+.text-container {
+  padding-bottom: 2px;
 
-.typed-paragraph-show {
-  padding-bottom: 5px;
-  // display: inline-block;
-}
+  .typed-paragraph {
+    padding-bottom: 5px;
+    display: none;
+  }
 
-.typed-word {
-  display: inline-block;
-}
+  .typed-paragraph-show {
+    padding-bottom: 5px;
+  }
 
-.typed-char {
-  display: none;
-}
+  .typed-word {
+    display: inline-block;
+  }
 
-.typed-char-show {
-  display: inline-block;
-  animation: char-animation 0.3s linear forwards;
-}
-@keyframes char-animation {
-  0% {
-    background: $primary;
+  .typed-char {
+    display: none;
+  }
+
+  .typed-char-show {
+    display: inline-block;
+    animation: char-animation 0.3s linear forwards;
+  }
+  @keyframes char-animation {
+    0% {
+      background: $primary;
+    }
   }
 }
 

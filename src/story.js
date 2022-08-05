@@ -2,157 +2,451 @@ export default [
   {
     id: 1,
     text: [
-      "System security restart..",
-      "Type a command to exit the matrix",
+      "Resume loading...",
+      "Version 0.21 beta",
+      "PENTIUM S CPU at 133 Mhz",
+      "Memory test: 64 MB ok",
       "",
-      "Enter 'help' to list all commands",
+      "Booting from hard drive...",
     ],
-    commands: [
-      {
-        text: "Available commands:",
-      },
-      {
-        text: "Take the goo",
-        setState: { blueGoo: true },
-        nextText: 2,
-      },
-      {
-        text: "Leave the goo",
-        nextText: 2,
-      },
-    ],
+    options: [],
   },
   {
     id: 2,
-    text: "You venture forth in search of answers to where you are when you come across a merchant.",
-    commands: [
+    text: [
+      "Welcome to IBM PC 1981",
+      "",
+      "You have 1 new message.",
+      "",
+      "Available commands:",
+    ],
+    options: [
       {
-        text: "Trade the goo for a sword",
-        requiredState: (currentState) => currentState.blueGoo,
-        setState: { blueGoo: false, sword: true },
+        text: "open",
         nextText: 3,
       },
       {
-        text: "Trade the goo for a shield",
-        requiredState: (currentState) => currentState.blueGoo,
-        setState: { blueGoo: false, shield: true },
-        nextText: 3,
+        text: "help",
+        nextText: 5,
       },
       {
-        text: "Ignore the merchant",
-        nextText: 3,
+        text: "restart",
+        nextText: -1,
       },
     ],
   },
   {
     id: 3,
-    text: "After leaving the merchant you start to feel tired and stumble upon a small town next to a dangerous looking castle.",
+    text: [
+      "New message from Anon6282:",
+      "",
+      "Listen, I don't have enough time.",
+      "They must have your address, too, or they will have it soon..",
+      "",
+      "The only way to save you and others is to erase the database on their main computer. ",
+      "This should win us some time.",
+      "",
+      "I got their IP: 192.168.0.1",
+      "",
+      "There just idiots with guns, you won't believe what password they got))",
+      "It's like the easiest.",
+      "",
+      "Sorry they're here I got to go!",
+      "Bggfaaaaaaaaaa",
+      "",
+      "Available commands:",
+    ],
     options: [
       {
-        text: "Explore the castle",
+        text: "exit",
         nextText: 4,
-      },
-      {
-        text: "Find a room to sleep at in the town",
-        nextText: 5,
-      },
-      {
-        text: "Find some hay in a stable to sleep in",
-        nextText: 6,
       },
     ],
   },
   {
     id: 4,
-    text: "You are so tired that you fall asleep while exploring the castle and are killed by some terrible monster in your sleep.",
+    text: [
+      "Welcome to IBM PC 1981",
+      "",
+      "Type 'help' to list all available commands",
+    ],
     options: [
       {
-        text: "Restart",
-        nextText: -1,
+        text: "help",
+        hide: true,
+        nextText: 5,
       },
     ],
   },
   {
     id: 5,
-    text: "Without any money to buy a room you break into the nearest inn and fall asleep. After a few hours of sleep the owner of the inn finds you and has the town guard lock you in a cell.",
+    text: [
+      "Available commands:",
+      "",
+      "> connect - remotely access another computer",
+      "",
+      "> restart - restar the computer",
+      "",
+      "> exit - exit current programm",
+    ],
     options: [
       {
-        text: "Restart",
+        text: "connect",
+        hide: true,
+        nextText: 6,
+      },
+      {
+        text: "restart",
+        hide: true,
         nextText: -1,
+      },
+      {
+        text: "exit",
+        hide: true,
+        nextText: 2,
       },
     ],
   },
   {
     id: 6,
-    text: "You wake up well rested and full of energy ready to explore the nearby castle.",
+    text: [
+      "Establishing secure SSH connection.",
+      "Type an IP address to connect:",
+      "",
+    ],
     options: [
       {
-        text: "Explore the castle",
+        text: "exit",
+        nextText: 2,
+      },
+      {
+        text: "q",
+        hide: true,
+        nextText: 2,
+      },
+      {
+        text: "192.168.0.1",
+        hide: true,
         nextText: 7,
       },
     ],
   },
   {
     id: 7,
-    text: "While exploring the castle you come across a horrible monster in your path.",
+    text: [
+      "Establishing secure SSH connection.",
+      ".........................................",
+      "Trying to connect to 192.168.0.1",
+      ".........................................",
+      "The server requires a password.",
+      "",
+      "Please type a password:",
+    ],
     options: [
       {
-        text: "Try to run",
+        text: "exit",
+        hide: true,
+        nextText: 2,
+      },
+      {
+        text: "q",
+        hide: true,
+        nextText: 2,
+      },
+      {
+        text: "restart",
+        hide: true,
+        nextText: -1,
+      },
+      {
+        text: "12345",
+        hide: true,
         nextText: 8,
       },
       {
-        text: "Attack it with your sword",
-        requiredState: (currentState) => currentState.sword,
-        nextText: 9,
+        text: "123456",
+        hide: true,
+        nextText: 8,
       },
       {
-        text: "Hide behind your shield",
-        requiredState: (currentState) => currentState.shield,
-        nextText: 10,
+        text: "11111",
+        hide: true,
+        nextText: 8,
       },
       {
-        text: "Throw the blue goo at it",
-        requiredState: (currentState) => currentState.blueGoo,
-        nextText: 11,
+        text: "123456789",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "qwerty",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "pass",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "password",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "1234",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "123456",
+        hide: true,
+        nextText: 8,
       },
     ],
   },
   {
     id: 8,
-    text: "Your attempts to run are in vain and the monster easily catches.",
+    text: [
+      "Successfully authenticated!",
+      "",
+      "Welcome to MILITEK network.",
+      "",
+    ],
     options: [
       {
-        text: "Restart",
-        nextText: -1,
+        text: "info",
+        nextText: 9,
+      },
+      {
+        text: "help",
+        nextText: 10,
+      },
+      {
+        text: "database",
+        hidden: true,
+        nextText: 11,
+      },
+      {
+        text: "exit",
+        hide: true,
+        nextText: 2,
       },
     ],
   },
   {
     id: 9,
-    text: "You foolishly thought this monster could be slain with a single sword.",
+    text: ["Info."],
     options: [
       {
-        text: "Restart",
-        nextText: -1,
+        text: "exit",
+        nextText: 8,
       },
     ],
   },
   {
     id: 10,
-    text: "The monster laughed as you hid behind your shield and ate you.",
+    text: [
+      "Available commands:",
+      "",
+      "Database - aceess database",
+      "",
+      "Info - get current info",
+      "",
+      "Exit - exit from current programm",
+      "",
+    ],
     options: [
       {
-        text: "Restart",
-        nextText: -1,
+        text: "database",
+        hide: true,
+        nextText: 11,
+      },
+      {
+        text: "info",
+        hide: true,
+        nextText: 9,
+      },
+      {
+        text: "exit",
+        hide: true,
+        nextText: 8,
       },
     ],
   },
   {
     id: 11,
-    text: "You threw your jar of goo at the monster and it exploded. After the dust settled you saw the monster was destroyed. Seeing your victory you decide to claim this castle as your and live out the rest of your days there.",
+    text: [
+      "KGB database setup completed.",
+      "",
+      "This database stores secret documents and can be accessed only by verified users .",
+      "",
+      "Please login to the database.",
+    ],
     options: [
       {
-        text: "Congratulations. Play Again.",
+        text: "login",
+        nextText: 12,
+      },
+      {
+        text: "exit",
+        nextText: 8,
+      },
+    ],
+  },
+  {
+    id: 12,
+    text: [
+      "Integrated Data Store authentication",
+      "",
+      "Deafault username: root",
+      "",
+      "Please enter username:",
+    ],
+    options: [
+      {
+        text: "root",
+        hide: true,
+        nextText: 13,
+      },
+      {
+        text: "q",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "exit",
+        hide: true,
+        nextText: 8,
+      },
+    ],
+  },
+  {
+    id: 13,
+    text: [
+      "Integrated Data Store authentication",
+      "",
+      "Deafault password: password",
+      "",
+      "Please enter password:",
+    ],
+    options: [
+      {
+        text: "password",
+        hide: true,
+        nextText: 14,
+      },
+      {
+        text: "q",
+        hide: true,
+        nextText: 8,
+      },
+      {
+        text: "exit",
+        hide: true,
+        nextText: 8,
+      },
+    ],
+  },
+  {
+    id: 14,
+    text: [
+      ">DB",
+      "You have successfully authenticated to Integrated Data Store.",
+      "",
+      "Welcome root user!",
+      "",
+      "Available commands:",
+    ],
+    options: [
+      {
+        text: "SHOW DATABASES",
+        nextText: 15,
+      },
+      {
+        text: "DROP DATABASE",
+        nextText: 16,
+      },
+      {
+        text: "exit",
+        nextText: 8,
+      },
+    ],
+  },
+  {
+    id: 15,
+    text: [
+      ">DB",
+      "",
+      "Available databases:",
+      "",
+      "MILITEKSTORE - this database contains top secret military documents, targets and maps.",
+      "",
+    ],
+    options: [
+      {
+        text: "exit",
+        nextText: 14,
+      },
+    ],
+  },
+  {
+    id: 16,
+    text: [
+      ">DB",
+      "",
+      "",
+      "CAUTION! EXECUTING THIS COMMAND WILL PERMANENTLY ERRASE THE DATABASE!",
+      "",
+      "Type database name:",
+      "",
+    ],
+    options: [
+      {
+        text: "MILITEKSTORE",
+        hide: true,
+        nextText: 17,
+      },
+    ],
+  },
+  {
+    id: 17,
+    text: [
+      ">DB",
+      "",
+      "Database has been deleted.",
+      "All documents are no longer accessable.",
+      "",
+    ],
+    options: [
+      {
+        text: "exit",
+        nextText: 18,
+      },
+    ],
+  },
+  {
+    id: 18,
+    text: [
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "UNAUTHENTICATED ACCESS DETECTED!",
+      "",
+    ],
+    options: [
+      {
+        text: "restart",
         nextText: -1,
       },
     ],

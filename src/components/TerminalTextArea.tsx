@@ -2,31 +2,31 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 function TypedText({
-  textArray,
-  commandsArray,
+  textNode,
   page,
   setPage,
 }: {
-  textArray: any;
-  commandsArray: string[];
-  page: string;
-  setPage: (value: string) => void;
+  textNode: any;
+  page: number;
+  setPage: (value: number) => void;
 }) {
   const inputElement =
     React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const commands = useMemo(() => {
-    return textArray.commands.map((el: any, key: number) => {
-      return (
-        <p key={key} className="typed-paragraph">
-          &gt; {el.text}
-        </p>
-      );
+  const options = useMemo(() => {
+    return textNode.options?.map((el: any, key: number) => {
+      if (!el.hide) {
+        return (
+          <p key={key} className="typed-paragraph">
+            &gt; {el.text}
+          </p>
+        );
+      }
     });
-  }, [textArray]);
+  }, [textNode]);
 
   const text = useMemo(() => {
-    return textArray.text.map((el: any, key: number) => {
+    return textNode.text.map((el: any, key: number) => {
       return (
         <p key={key} className="typed-paragraph">
           {el.split(" ").map((word: string, key: number) => (
@@ -42,7 +42,7 @@ function TypedText({
         </p>
       );
     });
-  }, [textArray]);
+  }, [textNode]);
 
   // Animate paragraphs
   useEffect(() => {
@@ -74,7 +74,7 @@ function TypedText({
       let char = document.querySelector(".typed-char");
 
       if (!char) {
-        if (page === "loading") setPage("home");
+        if (page === 1) setPage(2);
         // no hidden paragraphs left
         return clearInterval(intervalId); // stop running interval and exit
       }
@@ -85,8 +85,8 @@ function TypedText({
 
   return (
     <div>
-      <div id="text-container">{text}</div>
-      <div id="text-container">{commands}</div>
+      <div className="text-container">{text}</div>
+      <div className="text-container">{options}</div>
     </div>
   );
 }
