@@ -11,9 +11,6 @@ function TypedText({
   page: number;
   setPage: (value: number) => void;
 }) {
-  const inputElement =
-    React.useRef() as React.MutableRefObject<HTMLInputElement>;
-
   const options = useMemo(() => {
     return textNode.options?.map((el: any, key: number) => {
       if (!el.hide) {
@@ -52,6 +49,7 @@ function TypedText({
 
   //Showing first page after loading
   useEffect(() => {
+    console.log(loading, page);
     if (!loading && page === 1) {
       setPage(2);
     }

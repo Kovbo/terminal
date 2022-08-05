@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function useAnimateTearminalText(text: any) {
   const [loading, setLoading] = useState(true);
 
+  // Animate paragraphs
   useEffect(() => {
     let pargs = document.querySelectorAll(".typed-paragraph-show");
     pargs.forEach((par) => (par.className = "typed-paragraph"));
@@ -19,7 +20,9 @@ export default function useAnimateTearminalText(text: any) {
     }, 250);
   }, [text]);
 
+  // Animate characters
   useEffect(() => {
+    setLoading(true);
     let chars = document.querySelectorAll(".typed-char-show");
     chars.forEach((char) => (char.className = "typed-char"));
 
