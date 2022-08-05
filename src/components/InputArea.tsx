@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import React from "react";
 
 function InputArea({
   handleEnter,
@@ -17,9 +16,6 @@ function InputArea({
 
     setInputText(value);
   }
-
-  const inputElement =
-    React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
   function handleKeyDown(e: any) {
     handleEnter(e, inputText);

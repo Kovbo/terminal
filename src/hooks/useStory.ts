@@ -1,4 +1,4 @@
-import data from "../story.js";
+import { data } from "../story.js";
 import { Story } from "../types";
 
 export const useStory = () => {

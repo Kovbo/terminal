@@ -1,14 +1,7 @@
-import React, {
-  DOMElement,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-import "./App.scss";
+import React, { useEffect } from "react";
+import "./assets/App.scss";
 import TerminalTextArea from "./components/TerminalTextArea";
 import InputArea from "./components/InputArea";
-import "./fonts/retganon.ttf";
 import focus from "./utils/focus";
 import useResizeScreen from "./hooks/useResizeScreen";
 import { useStory } from "./hooks/useStory";
@@ -28,7 +21,7 @@ function App() {
   useEffect(() => {
     setTextNode(Story.find((textNode) => textNode.id === page));
     focus(inputRef);
-  }, [page]);
+  }, [page, Story]);
 
   //
   const handleEnterKeydown = (event: { key: string }, input: string) => {

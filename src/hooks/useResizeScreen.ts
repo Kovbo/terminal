@@ -8,13 +8,16 @@ const useResizeScreen = () => {
   }, []);
 
   const updateMonitorSize = () => {
-    let bounding = document.body.getBoundingClientRect();
-    console.log(bounding);
     let monitorElement = document.getElementById("monitor");
+
+    // hardcoded values of css monitor size to prevent GH pages production bug with clientWidth/offsetWidth and getBoundingClientRect.
+    const monitorElementHeight = 855;
+    const monitorElementWidth = 970;
+
     if (monitorElement) {
       let n = Math.min(
-        (bounding.height - 15) / monitorElement.clientHeight,
-        (bounding.width - 100) / monitorElement.clientWidth
+        (window.innerHeight - 15) / monitorElementHeight,
+        (window.innerWidth - 100) / monitorElementWidth
       );
       monitorElement.style.transform = `matrix(${n},0,0,${n}, 1, 1)`;
     }

@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import React, { useEffect, useMemo } from "react";
 import useAnimateTearminalText from "../hooks/useAnimateTearminalText";
 
-function TypedText({
+function TerminalTextArea({
   textNode,
   page,
   setPage,
@@ -20,6 +19,7 @@ function TypedText({
           </p>
         );
       }
+      return null;
     });
   }, [textNode]);
 
@@ -52,7 +52,7 @@ function TypedText({
     if (!loading && page === 1) {
       setPage(2);
     }
-  }, [loading]);
+  }, [loading, page, setPage]);
 
   return (
     <div>
@@ -62,4 +62,4 @@ function TypedText({
   );
 }
 
-export default TypedText;
+export default TerminalTextArea;
