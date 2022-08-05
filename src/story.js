@@ -224,7 +224,7 @@ export default [
       },
       {
         text: "database",
-        hidden: true,
+        hide: true,
         nextText: 11,
       },
       {

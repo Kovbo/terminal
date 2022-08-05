@@ -5,27 +5,28 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Data from "./story.js";
 import "./App.scss";
 import TerminalTextArea from "./components/TerminalTextArea";
 import InputArea from "./components/InputArea";
 import "./fonts/retganon.ttf";
 import focus from "./utils/focus";
 import useResizeScreen from "./hooks/useResizeScreen";
+import { useStory } from "./hooks/useStory";
 
 function App() {
-  const [inputText, setInputText] = React.useState<string>("");
+  const Story = useStory();
   const [page, setPage] = React.useState<number>(1);
   const [textNode, setTextNode] = React.useState(
-    Data.find((textNode) => textNode.id === page)
+    Story.find((textNode) => textNode.id === page)
   );
+  const [inputText, setInputText] = React.useState<string>("");
 
   const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
   useResizeScreen();
 
   useEffect(() => {
-    setTextNode(Data.find((textNode) => textNode.id === page));
+    setTextNode(Story.find((textNode) => textNode.id === page));
     focus(inputRef);
   }, [page]);
 
@@ -43,10 +44,6 @@ function App() {
     });
 
     setInputText("");
-
-    if (nextText === 0) {
-      console.log("Command does not exist");
-    }
 
     if (nextText > 0) {
       setPage(nextText);
@@ -80,9 +77,10 @@ function App() {
               </div>
 
               <div className="column right">
-                <div className="animated-img-wrap">
-                  <div className={`animated-img ${page}`}></div>
-                </div>
+                {/* If you want to add an image for a scene */}
+                {/* <div className="animated-img-wrap"> */}
+                {/* <div className={`animated-img ${page}`}></div> */}
+                {/* </div> */}
                 <div className=""></div>
               </div>
             </div>
