@@ -1,11 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=VT323&display=swap";
 $primary: #9bef6b;
 
-// @font-face {
-//   font-family: "Retganon";
-//   src: local("Retganon"), url("../public/retganon.ttf") format("truetype");
-// }
-
 @font-face {
   font-family: "KarmaS";
   src: local("KarmaS"), url("./fonts/karma_s.otf") format("opentype");
@@ -13,8 +8,6 @@ $primary: #9bef6b;
 
 body {
   font-family: "KarmaS";
-
-  // font-family: "Retganon", Helvetica, sans-serif;
   color: $primary;
   font-size: 1.25rem;
   line-height: 1.5em;
@@ -76,12 +69,8 @@ body {
   width: 100%;
   padding: 0 20px;
   border-radius: 48px;
-
-  background: radial-gradient(50% 50% at #273a32 0, #101911 100%);
-  // border: 16px solid #0f0f0f;
-  // -webkit-box-shadow: 0 1px 60px 10px #282e28,
-  // inset 0 0 20px 20px rgb(0 0 0 / 97%);
-  box-shadow: 0 1px 50px 5px #273a32;
+  background: radial-gradient(50% 50% at 50% 50%, #252d1c 0, #192515 100%);
+  box-shadow: 0 1px 50px 5px #273a2a;
 
   .noise {
     pointer-events: none;
